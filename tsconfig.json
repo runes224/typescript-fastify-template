@@ -1,0 +1,25 @@
+{
+    "extends": "fastify-tsconfig",
+    "compilerOptions": {
+        "target": "ES2015",
+        "module": "commonjs",
+        "lib": [
+        "es2015"
+        ],
+        "outDir": "dist",
+        "strict": true,
+        "moduleResolution": "node",
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "baseUrl": "src",
+        "forceConsistentCasingInFileNames": true
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": [
+        "dist",
+        "node_modules"
+    ],
+    "compileOnSave": false
+}

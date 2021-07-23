@@ -1,0 +1,54 @@
+{
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "npm run build && fastify start -l info dist/app.js",
+    "build": "tsc",
+    "dev": "tsc && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"tsc -w\" \"fastify start --ignore-watch=.ts$ -w -l info -P dist/app.js\"",
+    "check-types": "tsc --noEmit",
+    "eslint": "eslint src/**/*.ts",
+    "eslint:fix": "eslint src/**/*.ts --fix",
+    "format": "prettier --write 'src/**/*.ts'",
+    "lint": "npm-run-all eslint check-types",
+    "lint:fix": "npm-run-all eslint:fix check-types format",
+    "prepare": "npx husky install"
+  },
+  "dependencies": {
+    "@sinclair/typebox": "^0.17.7",
+    "cheerio": "^1.0.0-rc.10",
+    "fastify": "^3.0.0",
+    "fastify-autoload": "^3.3.1",
+    "fastify-cli": "^2.13.0",
+    "fastify-plugin": "^3.0.0",
+    "iconv-lite": "^0.6.3",
+    "json-pointer": "^0.6.1",
+    "node-fetch": "^2.6.1",
+    "pino": "^6.12.0",
+    "velona": "^0.7.0"
+  },
+  "devDependencies": {
+    "@types/json-pointer": "^1.0.31",
+    "@types/node": "^15.0.0",
+    "@types/node-fetch": "^2.5.11",
+    "@types/pino": "^6.3.9",
+    "@types/tap": "^15.0.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.3",
+    "@typescript-eslint/parser": "^4.28.3",
+    "concurrently": "^6.0.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.31.0",
+    "eslint-config-prettier": "8.3.0",
+    "fastify-tsconfig": "^1.0.1",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.1",
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.3.2",
+    "ts-node": "^10.1.0",
+    "typescript": "^4.3.5"
+  },
+  "lint-staged": {
+    "*.{js,ts}": "eslint --cache --fix",
+    "*.ts": "tsc --noEmit",
+    "*.{js,ts,json}": "prettier --write"
+  }
+}
